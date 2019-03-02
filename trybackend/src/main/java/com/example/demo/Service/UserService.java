@@ -13,8 +13,7 @@ public class UserService {
     UserRepo repo;
 
     public void register(String account,String password,String emailaddress,String realname,String IDcard,String walletaddress){
-        User user = new User(account,password,realname,IDcard,walletaddress,emailaddress);
-        repo.save(user);
+        repo.insertUser(account,password,emailaddress,realname,IDcard,walletaddress);
     }
 
     public boolean existsByAccount(String account){

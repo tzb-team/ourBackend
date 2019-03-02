@@ -22,7 +22,7 @@ public class User {
     private String realName;
 
     @Column(length = 18)
-    private String IDcard;
+    private String Idcard;
 
     @Column(length = 50)
     private String walletAddress;
@@ -31,8 +31,8 @@ public class User {
     private String emailAddress;
     @OneToMany(targetEntity = Patent.class,
             cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY,
-    mappedBy = "owner")
+            fetch = FetchType.LAZY,
+            mappedBy = "owner")
     private List<Patent> patents=new ArrayList<>();
 
 
@@ -82,7 +82,7 @@ public class User {
     }
 
     public void setIDcard(String IDcard) {
-        this.IDcard = IDcard;
+        this.Idcard = IDcard;
     }
 
     public void setWalletaddress(String walletaddress) {
@@ -102,7 +102,7 @@ public class User {
     }
 
     public String getIDcard() {
-        return IDcard;
+        return Idcard;
     }
 
     public String getWalletaddress() {
@@ -113,7 +113,7 @@ public class User {
         this.account = account;
         this.password = password;
         this.realName = realName;
-        this.IDcard = IDcard;
+        this.Idcard = IDcard;
         this.walletAddress = walletAddress;
         this.emailAddress = emailAddress;
     }
