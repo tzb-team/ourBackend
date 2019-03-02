@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/patent</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">ChenLi123</property>
+    <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+
+
+    <!-- 可以将向数据库发送的sql显示出来 -->
+    <property name="hibernate.show_sql">true</property>
+
+    <!-- 格式化sql -->
+    <property name="hibernate.format_sql">true</property>
+
+    <!-- hibernate的方言 -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <!-- 自动创建表 -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+
+    <!-- 用于设置事务提交方式 -->
+    <property name="hibernate.connection.autocommit">false</property>
+
+    <!-- 配置hibernate的映射文件所在位置 -->
+
+  </session-factory>
+</hibernate-configuration>
