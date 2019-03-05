@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import javax.tools.JavaCompiler;
 import java.util.List;
 
-public interface OrderRepo extends JpaRepository<Order,String> {
+public interface OrderRepo extends JpaRepository<Order,Long> {
 
     List<Order> findAll();
 

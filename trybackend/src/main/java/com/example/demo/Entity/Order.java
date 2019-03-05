@@ -11,6 +11,11 @@ import java.util.Calendar;
 public class Order {
 
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
     @Column()
     private Long orderID;
 

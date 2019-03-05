@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PatentRepo extends JpaRepository<Patent,String> {
+public interface PatentRepo extends JpaRepository<Patent,Long> {
 
     Patent findByPatentID(String patentID);
 

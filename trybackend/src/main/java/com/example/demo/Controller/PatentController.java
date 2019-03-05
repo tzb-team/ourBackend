@@ -13,15 +13,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/patent")
 public class PatentController {
-
     @Autowired
     PatentService service;
 
-    @PostMapping(value = "/patRegister",
-            consumes = {"application/json", "application/xml"})
-    public void patentReg(@RequestBody patentReg patents){
-        service.patentRegister(patents.getID(),patents.getName(),patents.getOwner(),patents.getWalletaddress(),patents.getType(),patents.getPool(),patents.getContent(),patents.getState());
+    @PostMapping(value = "/patRegister")
+    public void test(@RequestBody patentReg patentReg){
+        service.patentRegister(patentReg.ID,patentReg.name,patentReg.owner,patentReg.walletaddress,patentReg.type,patentReg.pool,patentReg.content,patentReg.state);
     }
+
+
+
+//    @PostMapping(value = "/test")
+//    public void patentReg(@RequestBody patReg patents){
+//        service.patentRegister(patents.getID(),patents.getName(),patents.getOwner());
+//    }
 
     @GetMapping(value = "/patCheck",
            produces = {"application/json", "application/xml"})

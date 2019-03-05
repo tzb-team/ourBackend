@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 public class Trans {
 
     @Id
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transID;
 

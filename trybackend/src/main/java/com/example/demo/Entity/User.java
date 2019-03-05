@@ -3,14 +3,19 @@ package com.example.demo.Entity;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "tbl_user")
-public class User {
+public class User implements Serializable {
 
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(length = 20)
     private String account;
 
@@ -18,7 +23,7 @@ public class User {
     private String password;
 
 
-    @Column(length = 10)
+    @Column(length = 50)
     private String realName;
 
     @Column(length = 18)

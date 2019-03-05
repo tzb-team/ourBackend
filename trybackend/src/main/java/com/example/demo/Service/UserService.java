@@ -6,14 +6,17 @@ import com.example.demo.Response.userResponse.showUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
+
 @Service
-public class UserService {
+public class UserService implements Serializable {
 
     @Autowired
     UserRepo repo;
 
     public void register(String account,String password,String emailaddress,String realname,String IDcard,String walletaddress){
-        repo.insertUser(account,password,emailaddress,realname,IDcard,walletaddress);
+        User user = new User(account,password,realname,IDcard,walletaddress,emailaddress);
+        repo.save(user);
     }
 
     public boolean existsByAccount(String account){

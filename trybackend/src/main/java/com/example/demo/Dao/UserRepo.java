@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-public interface UserRepo extends JpaRepository<User,String> {
+public interface UserRepo extends JpaRepository<User,Long> {
 
     User findByAccount(String accout);
 
@@ -20,10 +20,6 @@ public interface UserRepo extends JpaRepository<User,String> {
     boolean existsByAccount(String account);
 
     boolean existsByEmailAddress(String emailaddress);
-    @Transactional
-    @Modifying
-    @Query(value = "insert into tbl_user values (?1,?2,?3,?4,?5,?6)",nativeQuery = true)
-    void insertUser(String acc,String password,String eAddress,String realname,String idcard,String wAddress);
 
 //    @Transactional
 //    @Modifying

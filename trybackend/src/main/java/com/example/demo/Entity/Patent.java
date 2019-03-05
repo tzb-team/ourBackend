@@ -2,14 +2,19 @@ package com.example.demo.Entity;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tbl_patent")
-public class Patent {
+public class Patent implements Serializable {
 //    ID（String）name(String),<br>owner(String)<br>walletaddress(String)<br>
 //    type(String)<br/>,pool(String),content(String),state(int)//
 
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(length = 12)
     private String patentID;
 
@@ -158,6 +163,11 @@ public class Patent {
         this.isValid = false;
         this.price = 0;
         this.num = -1;
+    }
+    public Patent(String patentID, String patentName, String owner){
+        this.patentID = patentID;
+        this.patentName = patentName;
+        this.owner = owner;
     }
     public Patent(){}
 
