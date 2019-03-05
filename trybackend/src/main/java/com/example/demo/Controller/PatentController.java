@@ -1,6 +1,8 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Dao.UserRepo;
 import com.example.demo.Entity.Patent;
+import com.example.demo.Entity.User;
 import com.example.demo.Param.patentParam.*;
 import com.example.demo.Response.patentResponse.*;
 import com.example.demo.Response.patentResponse.patentState;
@@ -28,13 +30,16 @@ public class PatentController {
 //        service.patentRegister(patents.getID(),patents.getName(),patents.getOwner());
 //    }
 
+    @Autowired
+    UserRepo repo;
     @GetMapping(value = "/patCheck",
            produces = {"application/json", "application/xml"})
     public uncheckedList patentReg(){
         List<Patent> list = service.getUncheckList();
         uncheckedList list1 = new uncheckedList();
         for(int i=0;i<list.size();i++){
-            list1.unchecks.put(list.get(i).getPatentID(),list.get(i).getOwner());
+            User user = list.get(i).getOwner();
+            list1.unchecks.put(list.get(i).getPatentID(),user.getRealname());
         }
         return list1;
     }
@@ -52,7 +57,7 @@ public class PatentController {
     @PostMapping(value = "/patStaChange",
             consumes = {"application/json", "application/xml"})
     public void patentSetState(@RequestBody patentStateChange patents) {
-        service.changePatentNum(patents.getID(),patents.getNum());
+        service.changePatentNum(patents.getpatentID(),patents.getNum());
     }
 
     @GetMapping(value = "/showPatent",

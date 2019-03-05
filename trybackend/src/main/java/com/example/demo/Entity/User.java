@@ -123,4 +123,8 @@ public class User implements Serializable {
         this.emailAddress = emailAddress;
     }
     public User(){}
+
+    public Long getId() {
+        return id;
+    }
 }

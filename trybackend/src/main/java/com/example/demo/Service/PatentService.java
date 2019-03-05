@@ -1,7 +1,9 @@
 package com.example.demo.Service;
 
 import com.example.demo.Dao.PatentRepo;
+import com.example.demo.Dao.UserRepo;
 import com.example.demo.Entity.Patent;
+import com.example.demo.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,17 @@ public class PatentService {
     @Autowired
     PatentRepo repo;
 
-    public void patentRegister(String ID,String name,String owner,String walletaddress,String type,String pool,String content,int state){
-        Patent patent = new Patent(ID,name,owner,walletaddress,type,pool,content,state);
-        repo.save(patent);
+    @Autowired
+    UserRepo userRepo;
+
+    public boolean patentRegister(String ID,String name,String owner,String walletaddress,String type,String pool,String content,int state){
+        User user = userRepo.findByRealName(owner);
+        if(user != null) {
+            Patent patent = new Patent(ID, name, user, walletaddress, type, pool, content, state);
+            repo.save(patent);
+            return true;
+        }
+        return false;
     }
 
     public List<Patent> getUncheckList(){

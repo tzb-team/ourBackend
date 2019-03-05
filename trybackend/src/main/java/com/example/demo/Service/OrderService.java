@@ -25,9 +25,7 @@ public class OrderService {
         patent.setPrice(price);
         patRepo.save(patent);
 
-        int size = repo.findAll().size();
-        size++;
-        Order order = new Order((long)size,startTime,endTime,patentID);
+        Order order = new Order(startTime,endTime,patRepo.findByPatentID(patentID));
         repo.save(order);
     }
 
@@ -37,7 +35,7 @@ public class OrderService {
         patent.setPrice(0);
         patRepo.save(patent);
 
-        Order order = repo.findByPatentID(patentID);
+        Order order = repo.findByPatentID(patRepo.findByPatentID(patentID));
         order.setState(-1);
         repo.save(order);
     }
@@ -49,7 +47,7 @@ public class OrderService {
     }
 
     public int checkOrderState(String patentID){
-        return repo.findByPatentID(patentID).getState();
+        return repo.findByPatentID(patRepo.findByPatentID(patentID)).getState();
     }
 
     public List<Order> findAllValueableOrder(){

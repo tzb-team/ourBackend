@@ -25,8 +25,8 @@ public class Patent implements Serializable {
     cascade = CascadeType.ALL,
     fetch = FetchType.LAZY)
     //     真实姓名，方便管理员核实专利号与持有人是否对应。
-    @JoinColumn(referencedColumnName = "realname")
-    private String owner;
+    @JoinColumn(name = "owner",referencedColumnName = "realName")
+    private User owner;
 
     @Column(length = 45)
     private String walletAddress;
@@ -95,7 +95,7 @@ public class Patent implements Serializable {
         this.patentName = patentName;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
     }
 
@@ -127,7 +127,7 @@ public class Patent implements Serializable {
         return patentName;
     }
 
-    public String getOwner() {
+    public User getOwner() {
         return owner;
     }
 
@@ -151,7 +151,7 @@ public class Patent implements Serializable {
         return patentState;
     }
 
-    public Patent(String patentID, String patentName, String owner, String walletAddress, String type, String poolID, String description, Integer patentState) {
+    public Patent(String patentID, String patentName, User owner, String walletAddress, String type, String poolID, String description, Integer patentState) {
         this.patentID = patentID;
         this.patentName = patentName;
         this.owner = owner;
@@ -164,7 +164,7 @@ public class Patent implements Serializable {
         this.price = 0;
         this.num = -1;
     }
-    public Patent(String patentID, String patentName, String owner){
+    public Patent(String patentID, String patentName, User owner){
         this.patentID = patentID;
         this.patentName = patentName;
         this.owner = owner;

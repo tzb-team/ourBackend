@@ -1,6 +1,7 @@
 package com.example.demo.Dao;
 
 import com.example.demo.Entity.Order;
+import com.example.demo.Entity.Patent;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,9 +12,9 @@ public interface OrderRepo extends JpaRepository<Order,Long> {
 
     List<Order> findAll();
 
-    Order findByPatentID(String patentID);
+    Order findByPatentID(Patent patentID);
 
-    Order findByOrderID(String orderID);
+    Order findById(long id);
 
     List<Order> findByState(int state);
 }

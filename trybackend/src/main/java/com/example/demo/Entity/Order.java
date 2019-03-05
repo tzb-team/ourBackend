@@ -16,33 +16,30 @@ public class Order {
     private Long id;
 
 
-    @Column()
-    private Long orderID;
-
     @Temporal(TemporalType.DATE)
     private Calendar startDate;
 
     @Temporal(TemporalType.DATE)
     private Calendar endDate;
-    @OneToOne(targetEntity = Patent.class)
+    @OneToOne(targetEntity = Patent.class,
+    cascade = CascadeType.ALL,
+    fetch = FetchType.LAZY)
+    @JoinColumn(name = "patentid",referencedColumnName = "patentID")
     //后期改成OneTOne和JoinColumn试试
-    private String patentID;
+    private Patent patentID;
 
     @Column
     private int state;//    好像是交易状态？
 
 
-    public Order(Long orderID, Calendar startDate, Calendar endDate, String patentID) {
-        this.orderID = orderID;
+    public Order( Calendar startDate, Calendar endDate, Patent patentID) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.patentID = patentID;
         state = 0;
     }
 
-    public void setOrderID(Long orderID) {
-        this.orderID = orderID;
-    }
+
 
     public void setStartDate(Calendar startDate) {
         this.startDate = startDate;
@@ -52,16 +49,12 @@ public class Order {
         this.endDate = endDate;
     }
 
-    public void setPatentID(String patentID) {
+    public void setPatentID(Patent patentID) {
         this.patentID = patentID;
     }
 
     public void setState(int state) {
         this.state = state;
-    }
-
-    public Long getOrderID() {
-        return orderID;
     }
 
     public Calendar getStartDate() {
@@ -72,7 +65,7 @@ public class Order {
         return endDate;
     }
 
-    public String getPatentID() {
+    public Patent getPatentID() {
         return patentID;
     }
 

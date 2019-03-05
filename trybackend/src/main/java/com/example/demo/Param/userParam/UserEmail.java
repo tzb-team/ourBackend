@@ -8,7 +8,4 @@ public class UserEmail {
         return emailaddress;
     }
 
-    public UserEmail(String emailaddress) {
-        this.emailaddress = emailaddress;
-    }
 }

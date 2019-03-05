@@ -3,8 +3,10 @@ package com.example.demo.Service;
 import com.example.demo.Dao.OrderRepo;
 import com.example.demo.Dao.PatentRepo;
 import com.example.demo.Dao.TransRepo;
+import com.example.demo.Dao.UserRepo;
 import com.example.demo.Entity.Patent;
 import com.example.demo.Entity.Trans;
+import com.example.demo.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class TransService {
 
     @Autowired
     TransRepo repo;
+
+    @Autowired
+    UserRepo userRepo;
 
     @Autowired
     OrderRepo orderRepo;
@@ -28,12 +33,13 @@ public class TransService {
         Trans trans = new Trans((long)size,patentID,from,to,price);
         repo.save(trans);
 
-        orderRepo.findByPatentID(patentID).setState(1);
+        orderRepo.findByPatentID(patentRepo.findByPatentID(patentID)).setState(1);
 
         Patent patent = patentRepo.findByPatentID(patentID);
         patent.setValid(false);
         patent.setPrice(0);
-        patent.setOwner(to);
+        User owner = userRepo.findByWalletAddress(to);
+        patent.setOwner(owner);
         patentRepo.save(patent);
     }
 

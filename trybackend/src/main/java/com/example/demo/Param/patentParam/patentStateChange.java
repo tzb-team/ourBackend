@@ -2,11 +2,11 @@ package com.example.demo.Param.patentParam;
 
 public class patentStateChange {
 
-    private String ID;
+    private String patentID;
     private int num;
 
-    public String getID() {
-        return ID;
+    public String getpatentID() {
+        return patentID;
     }
 
     public int getNum() {
