@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Param.userParam.*;
+import com.example.demo.Response.BasicResponse;
 import com.example.demo.Response.userResponse.*;
 import com.example.demo.Response.userResponse.logRes;
 import com.example.demo.Service.UserService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -17,8 +19,11 @@ public class UserController {
 
     @PostMapping(value = "/userRegister",
             consumes = {"application/json", "application/xml"})
-    public void register(@RequestBody UserRegister register){
+    public BasicResponse register(@RequestBody UserRegister register){
         service.register(register.getAccount(),register.getPassword(),register.getEmailaddress(),register.getRealname(),register.getIdcard(),register.getWalletaddress());
+        BasicResponse response = new BasicResponse();
+        response.setResult(1);
+        return response;
     }
 
     @GetMapping(value = "/userLog",
