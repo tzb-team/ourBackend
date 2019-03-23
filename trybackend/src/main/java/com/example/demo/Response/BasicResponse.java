@@ -1,6 +1,7 @@
 package com.example.demo.Response;
 
 public class BasicResponse {
+
     private int result = 0;
 
     public int getResult() {

@@ -18,9 +18,12 @@ public class EmailController {
     @RequestMapping(value = "/VeriSent",
             method = RequestMethod.POST,
             consumes = {"application/json", "application/xml"})
-    public void sendMail(@RequestBody SendMailParameter param) throws Exception {
+    public EmailResponse sendMail(@RequestBody SendMailParameter param) throws Exception {
         service.insertCode(param.getEmail());
         System.out.println("发送成功");
+        EmailResponse response = new EmailResponse();
+        response.isRight =true;
+        return response;
     }
 
     @RequestMapping(value = "/emailVerify",
