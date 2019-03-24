@@ -22,8 +22,7 @@ public class User implements Serializable {
     @Column(length = 20)
     private String password;
 
-
-    @Column(length = 50)
+    @Column(length = 50,unique = false)
     private String realName;
 
     @Column(length = 18)
@@ -102,9 +101,6 @@ public class User implements Serializable {
         return password;
     }
 
-    public String getRealname() {
-        return realName;
-    }
 
     public String getIDcard() {
         return Idcard;

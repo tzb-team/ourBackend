@@ -40,7 +40,7 @@ public class PatentController {
         uncheckedList list1 = new uncheckedList();
         for(int i=0;i<list.size();i++){
             User user = list.get(i).getOwner();
-            list1.unchecks.put(list.get(i).getPatentID(),user.getRealname());
+            list1.unchecks.put(list.get(i).getPatentID(),user.getIDcard());
         }
         return list1;
     }

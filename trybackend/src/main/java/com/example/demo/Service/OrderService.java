@@ -2,8 +2,11 @@ package com.example.demo.Service;
 
 import com.example.demo.Dao.OrderRepo;
 import com.example.demo.Dao.PatentRepo;
+import com.example.demo.Dao.UserRepo;
 import com.example.demo.Entity.Order;
 import com.example.demo.Entity.Patent;
+import com.example.demo.Entity.User;
+import com.example.demo.Response.orderResponse.showOrder;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +21,22 @@ public class OrderService {
     OrderRepo repo;
     @Autowired
     PatentRepo patRepo;
-
+    @Autowired
+    UserRepo userRepo;
+    public showOrder showdetails(String patentID){
+        Patent patent = patRepo.findByPatentID(patentID);
+        Order order = repo.findByPatentID(patent);
+        User user = patent.getOwner();
+        showOrder orderpend = new showOrder();
+        orderpend.setPatentID(patentID);
+        orderpend.setPrice(patent.getPrice());
+        orderpend.setComment(patent.getDescription());
+        orderpend.setEndDate(order.getEndDate());
+        orderpend.setOwner(user.getRealName());
+        orderpend.setEmailaddress(user.getEmailAddress());
+        orderpend.setOrderState(patent.isValid());
+        return orderpend;
+    }
     public void createOrder(String patentID, int price, Calendar startTime,Calendar endTime){
         Patent patent = patRepo.findByPatentID(patentID);
         patent.setValid(true);

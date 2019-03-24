@@ -25,7 +25,7 @@ public class Patent implements Serializable {
     cascade = CascadeType.ALL,
     fetch = FetchType.LAZY)
     //     真实姓名，方便管理员核实专利号与持有人是否对应。
-    @JoinColumn(name = "owner",referencedColumnName = "realName")
+    @JoinColumn(name = "owner",referencedColumnName = "Idcard")
     private User owner;
 
     @Column(length = 45)

@@ -6,4 +6,11 @@ public class OrderCancel {
     public String getPatentID() {
         return patentID;
     }
+
+    public OrderCancel(String patentID) {
+        this.patentID = patentID;
+    }
+    public OrderCancel(){
+
+    }
 }
