@@ -39,6 +39,6 @@ public class UserService implements Serializable {
 
     public showUser showUserDetail(String account){
         User user = repo.findByAccount(account);
-        return new showUser(user.getAccount(),user.getEmailAddress(),user.getRealname(),user.getPatents());
+        return new showUser(user.getAccount(),user.getEmailAddress(),user.getRealName(),user.getPatents());
     }
 }
