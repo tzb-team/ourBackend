@@ -12,7 +12,6 @@ public class FundamentalResponse {
         isSucc = succ;
     }
     public FundamentalResponse(){
-
     }
 
     public FundamentalResponse(boolean isSucc) {

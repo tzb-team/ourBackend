@@ -1,7 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Param.userParam.*;
-import com.example.demo.Response.BasicResponse;
+import com.example.demo.Response.FundamentalResponse;
 import com.example.demo.Response.userResponse.*;
 import com.example.demo.Response.userResponse.logRes;
 import com.example.demo.Service.UserService;
@@ -19,10 +19,10 @@ public class UserController {
 
     @PostMapping(value = "/userRegister",
             consumes = {"application/json", "application/xml"})
-    public BasicResponse register(@RequestBody UserRegister register){
+    public FundamentalResponse register(@RequestBody UserRegister register){
         service.register(register.getAccount(),register.getPassword(),register.getEmailaddress(),register.getRealname(),register.getIdcard(),register.getWalletaddress());
-        BasicResponse response = new BasicResponse();
-        response.setResult(1);
+        FundamentalResponse response = new FundamentalResponse();
+        response.setSucc(true);
         return response;
     }
 
