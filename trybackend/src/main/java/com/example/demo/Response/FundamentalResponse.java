@@ -11,6 +11,15 @@ public class FundamentalResponse {
     public void setSucc(boolean succ) {
         isSucc = succ;
     }
+
+    public boolean isSucc() {
+        return isSucc;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
     public FundamentalResponse(){
     }
 

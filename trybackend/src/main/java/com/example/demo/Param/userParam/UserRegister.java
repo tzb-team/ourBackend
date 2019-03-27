@@ -30,8 +30,6 @@ public class UserRegister  {
         this.emailaddress = emailaddress;
     }
 
-
-
     public void setRealname(String realname) {
         this.realname = realname;
     }

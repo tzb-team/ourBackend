@@ -52,7 +52,6 @@ public class UserController {
     @ResponseBody
     public showUser showUserInfo(@RequestBody SelectUser user){
         return service.showUserDetail(user.getAccount());
-
     }
 
     @GetMapping(value = "/checkEmail",
