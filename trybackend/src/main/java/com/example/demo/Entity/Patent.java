@@ -1,8 +1,11 @@
 package com.example.demo.Entity;
 
 
+import com.example.demo.Enum.PatentKind;
+
 import javax.persistence.*;
 import java.io.Serializable;
+
 
 @Entity
 @Table(name = "tbl_patent")
@@ -30,9 +33,9 @@ public class Patent implements Serializable {
 
     @Column(length = 45)
     private String walletAddress;
-
+    @Enumerated(EnumType.STRING)
     @Column(length=3)
-    private String type;//      初步分类，后期定具体分类
+    private PatentKind type;//      初步分类，后期定具体分类
 
     @Column(length = 30)
     private String poolID;
@@ -103,7 +106,7 @@ public class Patent implements Serializable {
         this.walletAddress = walletAddress;
     }
 
-    public void setType(String type) {
+    public void setType(PatentKind type) {
         this.type = type;
     }
 
@@ -135,7 +138,7 @@ public class Patent implements Serializable {
         return walletAddress;
     }
 
-    public String getType() {
+    public PatentKind getType() {
         return type;
     }
 
@@ -151,7 +154,7 @@ public class Patent implements Serializable {
         return patentState;
     }
 
-    public Patent(String patentID, String patentName, User owner, String walletAddress, String type, String poolID, String description, Integer patentState) {
+    public Patent(String patentID, String patentName, User owner, String walletAddress, PatentKind type, String poolID, String description, Integer patentState) {
         this.patentID = patentID;
         this.patentName = patentName;
         this.owner = owner;

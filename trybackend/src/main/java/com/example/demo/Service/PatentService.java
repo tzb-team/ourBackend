@@ -4,6 +4,7 @@ import com.example.demo.Dao.PatentRepo;
 import com.example.demo.Dao.UserRepo;
 import com.example.demo.Entity.Patent;
 import com.example.demo.Entity.User;
+import com.example.demo.Enum.PatentKind;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class PatentService {
     public boolean patentRegister(String ID,String name,String owner,String walletaddress,String type,String pool,String content,int state){
         User user = userRepo.findByRealName(owner);
         if(user != null) {
-            Patent patent = new Patent(ID, name, user, walletaddress, type, pool, content, state);
+            Patent patent = new Patent(ID, name, user, walletaddress, PatentKind.valueOf(type), pool, content, state);
             repo.save(patent);
             return true;
         }
