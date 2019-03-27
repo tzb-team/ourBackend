@@ -1,14 +1,19 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.Entity.Order;
 import com.example.demo.Param.orderParam.OrderCancel;
 import com.example.demo.Param.orderParam.*;
 import com.example.demo.Response.FundamentalResponse;
 import com.example.demo.Response.orderResponse.orderState;
 import com.example.demo.Response.orderResponse.showOrder;
 import com.example.demo.Service.OrderService;
+import org.aspectj.weaver.ast.Or;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -53,5 +58,11 @@ public class OrderController {
         orderState st = new orderState();
         st.setState(state);
         return st;
+    }
+
+    @GetMapping(value = "/orders")
+    @ResponseBody
+    public List<Order> getOrders(){
+        return service.findAllValueableOrder();
     }
 }
