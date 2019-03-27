@@ -26,7 +26,7 @@ public class UserController {
         return response;
     }
 
-    @GetMapping(value = "/userLog",
+    @PostMapping(value = "/userLog",
             consumes = {"application/json", "application/xml"},
             produces = {"application/json", "application/xml"})
     @ResponseBody
