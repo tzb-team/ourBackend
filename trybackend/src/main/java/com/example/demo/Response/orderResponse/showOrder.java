@@ -12,6 +12,38 @@ public class showOrder {
     Calendar endDate;
     String emailaddress;
 
+    public String getPatentID() {
+        return patentID;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public String getWalletaddress() {
+        return walletaddress;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public boolean isOrderState() {
+        return orderState;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
+    public String getEmailaddress() {
+        return emailaddress;
+    }
+
     public void setEmailaddress(String emailaddress) {
         this.emailaddress = emailaddress;
     }

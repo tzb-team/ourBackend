@@ -1,7 +1,5 @@
 package com.example.demo.Entity;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class User implements Serializable {
     private String realName;
 
     @Column(length = 18)
-    private String Idcard;
+    private String idcard;
 
     @Column(length = 50)
     private String walletAddress;
@@ -86,7 +84,7 @@ public class User implements Serializable {
     }
 
     public void setIDcard(String IDcard) {
-        this.Idcard = IDcard;
+        this.idcard = IDcard;
     }
 
     public void setWalletaddress(String walletaddress) {
@@ -103,7 +101,7 @@ public class User implements Serializable {
 
 
     public String getIDcard() {
-        return Idcard;
+        return idcard;
     }
 
     public String getWalletaddress() {
@@ -114,7 +112,7 @@ public class User implements Serializable {
         this.account = account;
         this.password = password;
         this.realName = realName;
-        this.Idcard = IDcard;
+        this.idcard = IDcard;
         this.walletAddress = walletAddress;
         this.emailAddress = emailAddress;
     }

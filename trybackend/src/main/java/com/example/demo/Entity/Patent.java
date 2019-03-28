@@ -33,9 +33,10 @@ public class Patent implements Serializable {
 
     @Column(length = 45)
     private String walletAddress;
+
     @Enumerated(EnumType.STRING)
-    @Column(length=3)
-    private PatentKind type;//      初步分类，后期定具体分类
+    @Column
+    private PatentKind type;
 
     @Column(length = 30)
     private String poolID;

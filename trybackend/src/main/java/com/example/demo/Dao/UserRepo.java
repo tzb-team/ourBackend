@@ -27,6 +27,7 @@ public interface UserRepo extends JpaRepository<User,Long> {
 
     boolean existsByEmailAddress(String emailaddress);
 
+    User findByIdcard(String idcard);
 //    @Transactional
 //    @Modifying
 //    @Query(value = "update users set password=?2,emailaddress=?3,walletaddress=?4 where username=?1;",nativeQuery = true)
