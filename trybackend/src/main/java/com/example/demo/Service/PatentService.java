@@ -1,4 +1,4 @@
-package com.example.demo.Service;
+﻿package com.example.demo.Service;
 
 import com.example.demo.Dao.PatentRepo;
 import com.example.demo.Dao.UserRepo;
@@ -22,7 +22,7 @@ public class PatentService {
     public boolean patentRegister(String ID,String name,String owner,String walletaddress,String type,String pool,String content,int state){
         User user = userRepo.findByIdcard(owner);
         if(user != null) {
-            Patent patent = new Patent(ID, name, user, walletaddress, PatentKind.作业运输, pool, content, state);
+            Patent patent = new Patent(ID, name, user, walletaddress, PatentKind.valueOf(type), pool, content, state);
             repo.save(patent);
             return true;
         }
