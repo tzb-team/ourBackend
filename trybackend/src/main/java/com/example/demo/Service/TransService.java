@@ -31,11 +31,13 @@ public class TransService {
         int size = repo.findAll().size();
         size++;
         Trans trans = new Trans((long)size,patentID,from,to,price);
+        Patent patent = patentRepo.findByPatentID(patentID);
+        trans.setPatentName(patent.getPatentName());
+        trans.setType(patent.getType());
         repo.save(trans);
 
         orderRepo.findByPatentID(patentRepo.findByPatentID(patentID)).setState(1);
 
-        Patent patent = patentRepo.findByPatentID(patentID);
         patent.setValid(false);
         patent.setPrice(0);
         User owner = userRepo.findByWalletAddress(to);
