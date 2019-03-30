@@ -1,5 +1,6 @@
 package com.example.demo.Entity;
 
+import com.example.demo.Enum.PatentKind;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.annotation.Generated;
@@ -18,6 +19,45 @@ public class Trans {
 
     @Column(length = 12)
     private String patentID;
+
+    @Column(length = 40)
+    private String patentName;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private PatentKind type;
+
+    public String getPatentName() {
+        return patentName;
+    }
+
+    public PatentKind getType() {
+        return type;
+    }
+
+    public String getOwnerfrom() {
+        return ownerfrom;
+    }
+
+    public String getOwnerto() {
+        return ownerto;
+    }
+
+    public void setPatentName(String patentName) {
+        this.patentName = patentName;
+    }
+
+    public void setType(PatentKind type) {
+        this.type = type;
+    }
+
+    public void setOwnerfrom(String ownerfrom) {
+        this.ownerfrom = ownerfrom;
+    }
+
+    public void setOwnerto(String ownerto) {
+        this.ownerto = ownerto;
+    }
 
     @Column(length = 50)
     private String ownerfrom;

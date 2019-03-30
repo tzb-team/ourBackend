@@ -4,6 +4,7 @@ import com.example.demo.Dao.UserRepo;
 import com.example.demo.Entity.Patent;
 import com.example.demo.Entity.User;
 import com.example.demo.Param.patentParam.*;
+import com.example.demo.Response.FundamentalResponse;
 import com.example.demo.Response.patentResponse.*;
 import com.example.demo.Response.patentResponse.patentState;
 import com.example.demo.Service.PatentService;
@@ -20,8 +21,11 @@ public class PatentController {
     PatentService service;
 
     @PostMapping(value = "/patRegister")
-    public void test(@RequestBody patentReg patentReg){
+    public FundamentalResponse test(@RequestBody patentReg patentReg){
         service.patentRegister(patentReg.ID,patentReg.name,patentReg.owner,patentReg.walletaddress,patentReg.type,patentReg.pool,patentReg.content,patentReg.state);
+        FundamentalResponse response = new FundamentalResponse();
+        response.setSucc(true);
+        return response;
     }
 
 

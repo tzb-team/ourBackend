@@ -11,6 +11,22 @@ public class transaction {
         return patentID;
     }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public void setPatentID(String patentID) {
+        this.patentID = patentID;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
     public String getFrom() {
         return from;
     }
