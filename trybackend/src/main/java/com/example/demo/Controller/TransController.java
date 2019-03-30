@@ -1,12 +1,15 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Entity.Trans;
+import com.example.demo.Enum.PatentKind;
 import com.example.demo.Param.patentParam.patentStateChange;
 import com.example.demo.Param.transParam.*;
+import com.example.demo.Response.FundamentalResponse;
 import com.example.demo.Response.transReponse.showAll;
 import com.example.demo.Response.transReponse.showSelf;
 import com.example.demo.Service.TransService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +24,10 @@ public class TransController {
 
     @PostMapping(value = "/transaction",
             consumes = {"application/json", "application/xml"})
-    public void trade(@RequestBody transaction trans) {
+    public FundamentalResponse trade(@RequestBody transaction trans) {
         service.transaction(trans.getPatentID(),trans.getFrom(),trans.getTo(),trans.getPrice());
+        FundamentalResponse response=new FundamentalResponse(true);
+        return response;
     }
 
     @GetMapping(value = "/showTrans",
@@ -35,6 +40,11 @@ public class TransController {
             alls.trans[i] = trans.get(i);
         }
         return alls;
+    }
+    @GetMapping(value = "/kind")
+    @ResponseBody
+    public ResponseEntity<?> showTransByKind(@RequestBody Pkind kind){
+        return ResponseEntity.ok(service.showTransByKind(Enum.valueOf(PatentKind.class,kind.getKind())));
     }
 
     @GetMapping(value = "/showTransSelf",

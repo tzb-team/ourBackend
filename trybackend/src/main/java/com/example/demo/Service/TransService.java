@@ -7,6 +7,7 @@ import com.example.demo.Dao.UserRepo;
 import com.example.demo.Entity.Patent;
 import com.example.demo.Entity.Trans;
 import com.example.demo.Entity.User;
+import com.example.demo.Enum.PatentKind;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,11 +41,13 @@ public class TransService {
 
         patent.setValid(false);
         patent.setPrice(0);
-        User owner = userRepo.findByWalletAddress(to);
+        User owner = userRepo.findByIdcard(to);
         patent.setOwner(owner);
         patentRepo.save(patent);
     }
-
+    public List<Trans> showTransByKind(PatentKind kind){
+        return repo.findBytype(kind);
+    }
     public List<Trans> showTrans(){
         return repo.findAll();
     }
