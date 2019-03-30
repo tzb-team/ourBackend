@@ -37,7 +37,7 @@ public class TransService {
         trans.setType(patent.getType());
         repo.save(trans);
 
-        orderRepo.findByPatentID(patentRepo.findByPatentID(patentID)).setState(1);
+        orderRepo.findByPatent(patentRepo.findByPatentID(patentID)).setState(1);
 
         patent.setValid(false);
         patent.setPrice(0);

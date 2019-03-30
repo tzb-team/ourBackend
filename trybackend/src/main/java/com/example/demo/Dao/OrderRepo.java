@@ -12,7 +12,7 @@ public interface OrderRepo extends JpaRepository<Order,Long> {
 
     List<Order> findAll();
 
-    Order findByPatentID(Patent patentID);
+    Order findByPatent(Patent patentID);
 
     Order findById(long id);
 

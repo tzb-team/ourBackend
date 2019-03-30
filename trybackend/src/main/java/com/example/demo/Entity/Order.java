@@ -27,7 +27,7 @@ public class Order {
     fetch = FetchType.LAZY)
     @JoinColumn(name = "patentid",referencedColumnName = "patentID")
     //后期改成OneTOne和JoinColumn试试
-    private Patent patentID;
+    private Patent patent;
 
     @Column
     private int state;//    好像是交易状态？
@@ -36,7 +36,7 @@ public class Order {
     public Order( Calendar startDate, Calendar endDate, Patent patentID) {
         this.startDate = startDate;
         this.endDate = endDate;
-        this.patentID = patentID;
+        this.patent = patentID;
         state = 0;
     }
 
@@ -50,8 +50,8 @@ public class Order {
         this.endDate = endDate;
     }
 
-    public void setPatentID(Patent patentID) {
-        this.patentID = patentID;
+    public void setPatent(Patent patentID) {
+        this.patent = patentID;
     }
 
     public void setState(int state) {
@@ -66,8 +66,8 @@ public class Order {
         return endDate;
     }
 
-    public Patent getPatentID() {
-        return patentID;
+    public Patent getPatent() {
+        return patent;
     }
 
     public int getState() {

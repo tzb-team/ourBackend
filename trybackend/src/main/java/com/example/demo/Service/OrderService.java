@@ -25,7 +25,7 @@ public class OrderService {
     UserRepo userRepo;
     public showOrder showdetails(String patentID){
         Patent patent = patRepo.findByPatentID(patentID);
-        Order order = repo.findByPatentID(patent);
+        Order order = repo.findByPatent(patent);
         User user = patent.getOwner();
         showOrder orderpend = new showOrder();
         orderpend.setPatentID(patentID);
@@ -53,7 +53,7 @@ public class OrderService {
         patent.setPrice(0);
         patRepo.save(patent);
 
-        Order order = repo.findByPatentID(patRepo.findByPatentID(patentID));
+        Order order = repo.findByPatent(patRepo.findByPatentID(patentID));
         order.setState(-1);
         repo.save(order);
     }
@@ -65,7 +65,7 @@ public class OrderService {
     }
 
     public int checkOrderState(String patentID){
-        return repo.findByPatentID(patRepo.findByPatentID(patentID)).getState();
+        return repo.findByPatent(patRepo.findByPatentID(patentID)).getState();
     }
 
     public List<Order> findAllValueableOrder(){
