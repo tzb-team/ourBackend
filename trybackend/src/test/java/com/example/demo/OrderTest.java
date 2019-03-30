@@ -26,9 +26,10 @@ public class OrderTest {
         orderPend.price=23;
         Calendar calendar=Calendar.getInstance();
         Calendar calendar1=Calendar.getInstance();
-        calendar.setTime(new Date("1999-11-12"));
-        calendar.setTime(new Date("2020-12-30"));
-        orderPend.startTime=calendar;
+        calendar.set(1998,12,01);
+        orderPend.startTime = (Calendar) calendar.clone();
+        calendar.set(2020,2,12);
+        orderPend.endTime = (Calendar)calendar.clone();
 
         FundamentalResponse expected = new FundamentalResponse(true);
 
