@@ -8,6 +8,7 @@ import com.example.demo.Response.FundamentalResponse;
 import com.example.demo.Response.orderResponse.orderState;
 import com.example.demo.Response.orderResponse.showOrder;
 import com.example.demo.Service.OrderService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,7 +61,12 @@ public class OrderController {
 
     @GetMapping(value = "/orders")
     @ResponseBody
-    public List<Order> getOrders(){
-        return service.findAllValueableOrder();
+    public Order[] getOrders(){
+        List<Order> lists = service.findAllValueableOrder();
+        Order[] orders = new Order[lists.size()];
+        for(int i = 0;i<orders.length;i++){
+            orders[i] = lists.get(i);
+        }
+        return orders;
     }
 }

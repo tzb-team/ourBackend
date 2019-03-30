@@ -69,6 +69,8 @@ public class OrderService {
     }
 
     public List<Order> findAllValueableOrder(){
-        return repo.findByState(0);
+        List<Order> lists = repo.findAll();
+        System.out.println(lists.size());
+        return lists;
     }
 }
