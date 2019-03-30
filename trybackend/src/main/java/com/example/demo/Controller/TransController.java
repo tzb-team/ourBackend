@@ -41,10 +41,10 @@ public class TransController {
         }
         return alls;
     }
-    @GetMapping(value = "/kind")
+    @GetMapping(value = "/{type}")
     @ResponseBody
-    public ResponseEntity<?> showTransByKind(@RequestBody Pkind kind){
-        return ResponseEntity.ok(service.showTransByKind(Enum.valueOf(PatentKind.class,kind.getKind())));
+    public ResponseEntity<?> showTransByKind(@PathVariable(value = "type") String kind){
+        return ResponseEntity.ok(service.showTransByKind(Enum.valueOf(PatentKind.class,kind)));
     }
 
     @GetMapping(value = "/showTransSelf",
