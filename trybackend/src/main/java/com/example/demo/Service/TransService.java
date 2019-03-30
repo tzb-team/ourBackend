@@ -43,6 +43,7 @@ public class TransService {
         patent.setPrice(0);
         User owner = userRepo.findByIdcard(to);
         patent.setOwner(owner);
+        patent.setWalletAddress(owner.getWalletAddress());
         patentRepo.save(patent);
     }
     public List<Trans> showTransByKind(PatentKind kind){
